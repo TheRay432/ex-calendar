@@ -1,0 +1,74 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #12121f;
+  color: #eee;
+}
+.calendar {
+  width: 45rem;
+  background-color: #222227;
+  box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
+}
+.month {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 12rem;
+  background-color: #167e56;
+  text-align: center;
+  & h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+  }
+  & p {
+    font-size: 1.6rem;
+  }
+  & svg {
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+}
+.weeks {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 0 0.4rem;
+  height: 5rem;
+  & div {
+    width: calc(44.2rem / 7);
+    text-align: center;
+  }
+}
+.days {
+  padding: 0.4rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  & div {
+    width: calc(44.2rem / 7);
+    padding: 1.5rem 0;
+    text-align: center;
+    border: 1px solid #167e56;
+  }
+}
+.prev-date,
+.next-date {
+  opacity: 0.5;
+}
