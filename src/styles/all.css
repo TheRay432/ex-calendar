@@ -38,14 +38,8 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 0 2rem;
-  height: 12rem;
+  padding: 0 0.5rem;
+  height: 5rem;
   background-color: #167e56;
   text-align: center;
 }
@@ -61,8 +55,52 @@ html {
   font-size: 1.6rem;
 }
 
+.month .icon {
+  width: 2rem;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .month svg {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.month .date {
+  -ms-flex-preferred-size: 35%;
+      flex-basis: 35%;
+  background-color: transparent;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+.month .date.active {
+  background-color: #eee;
+}
+
+.month .date.active h2 {
+  color: red;
+}
+
+.month .next-icon {
+  margin-left: auto;
   cursor: pointer;
 }
 

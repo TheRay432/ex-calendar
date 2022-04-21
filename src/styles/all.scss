@@ -25,10 +25,8 @@ html {
 }
 .month {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  height: 12rem;
+  padding: 0 0.5rem;
+  height: 5rem;
   background-color: #167e56;
   text-align: center;
   & h1 {
@@ -40,8 +38,34 @@ html {
   & p {
     font-size: 1.6rem;
   }
+  & .icon {
+    width: 2rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   & svg {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  & .date {
+    flex-basis: 35%;
+    background-color: transparent;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  & .date.active {
+    background-color: #eee;
+    & h2 {
+      color: red;
+    }
+  }
+  & .next-icon {
+    margin-left: auto;
     cursor: pointer;
   }
 }

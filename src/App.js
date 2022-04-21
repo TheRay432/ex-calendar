@@ -9,7 +9,8 @@ function App() {
   const [prevArr, setPrevArr] = useState(null);
   const [nowMonthArr, setNowMonthArr] = useState(null);
   const [nextMonthArr, setNextMonthArr] = useState(null);
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date(2017, 4, 1));
+  const [monthState, setMonthState] = useState(1);
 
   const months = [
     "一月",
@@ -28,6 +29,7 @@ function App() {
 
   const getDateData = () => {
     date.setDate(1);
+    console.log(date.toLocaleDateString());
     const pArr = [];
     const nArr = [];
     const xArr = [];
@@ -47,6 +49,7 @@ function App() {
       date.getMonth() + 1,
       0
     ).getDay();
+
     const nextDays = 7 - lastDayIndex - 1;
     setMonth(months[date.getMonth()]);
     setYearsDay(new Date().toLocaleDateString());
@@ -62,11 +65,9 @@ function App() {
       xArr.push(j);
     }
     setNextMonthArr([...xArr]);
-    console.log(date);
   };
 
   useEffect(() => {
-    setDate(new Date());
     setWeekArr([
       "星期日",
       "星期一",
@@ -80,23 +81,53 @@ function App() {
   }, []);
 
   const handlePrev = () => {
-    date.setMonth(date.getMonth() - 1);
-    getDateData();
+    console.log(date.toLocaleDateString());
+
+    if (monthState > 1) {
+      date.setMonth(date.getMonth() - 1);
+      setMonthState(monthState - 1);
+      getDateData();
+    }
   };
   const handleNext = () => {
-    date.setMonth(date.getMonth() + 1);
-    getDateData();
+    console.log(date.toLocaleDateString());
+    if (monthState < 3) {
+      date.setMonth(date.getMonth() + 1);
+      setMonthState(monthState + 1);
+      getDateData();
+    }
+  };
+  const handleMonthClick = (state) => {
+    setMonthState(state);
   };
   return (
     <div className="container">
       <div className="calendar">
         <div className="month">
-          <FontAwesomeIcon icon={faAngleLeft} onClick={handlePrev} />
-          <div className="date">
-            <h1>{month}</h1>
-            <p>{date.toLocaleDateString()}</p>
+          <div className="icon" onClick={handlePrev}>
+            <FontAwesomeIcon icon={faAngleLeft} />
           </div>
-          <FontAwesomeIcon icon={faAngleRight} onClick={handleNext} />
+          <div
+            className={monthState === 1 ? "date active" : "date"}
+            onClick={() => handleMonthClick(1)}
+          >
+            <h2>2017 5月</h2>
+          </div>
+          <div
+            className={monthState === 2 ? "date active" : "date"}
+            onClick={() => handleMonthClick(2)}
+          >
+            <h2>2017 6月</h2>
+          </div>
+          <div
+            className={monthState === 3 ? "date active" : "date"}
+            onClick={() => handleMonthClick(3)}
+          >
+            <h2>2017 7月</h2>
+          </div>
+          <div className="icon next-icon" onClick={handleNext}>
+            <FontAwesomeIcon icon={faAngleRight} />
+          </div>
         </div>
         <div className="weeks">
           {weekArr && weekArr.map((item) => <div key={item}>{item}</div>)}
